@@ -8,15 +8,25 @@ var bot = new SlackBot({
   name: "Jokes Bot"
 })
 
-bot.on("message", msg => {
-    switch (msg.type) {
-    case "message":
-      if (msg.channel[0] === "D" && msg.bot_id === undefined) {
-        getRandomJoke(postMessage, msg.user)
-      }
-      break
-    }
-})
+bot.on('start', function() {
+    // more information about additional params https://api.slack.com/methods/chat.postMessage
+    var params = {
+        icon_emoji: ':cat:'
+    };
+    
+    // define channel, where bot exist. You can adjust it there https://my.slack.com/services 
+    bot.postMessageToChannel('bot_test', 'meow!', params);
+    
+    // define existing username instead of 'user_name'
+    bot.postMessageToUser('Kenneth', 'meow!', params); 
+    
+    // If you add a 'slackbot' property, 
+    // you will post to another user's slackbot channel instead of a direct message
+    bot.postMessageToUser('Kenneth', 'meow!', { 'slackbot': true, icon_emoji: ':cat:' }); 
+    
+});
+
+
 
 const getRandomJoke = (callback, user) => {
   return request("https://icanhazdadjoke.com/slack", (error, response) => {
