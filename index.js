@@ -14,7 +14,8 @@ bot.on("message", msg => {
             if (msg.channel[0] === "D" && msg.bot_id === undefined) {
                 getRandomJoke(postMessage, msg.user)
             } else {
-                getRandomJoke(postMessage, msg.channel)
+                //Continuing tomorrow
+                //getRandomJoke(postMessage, msg.channel)
             }
       break
     }
