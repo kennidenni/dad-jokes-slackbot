@@ -11,9 +11,11 @@ var bot = new SlackBot({
 bot.on("message", msg => {
     switch (msg.type) {
         case "message":
-            //if (msg.channel[0] === "D" && msg.bot_id === undefined) {
+            if (msg.channel[0] === "D" && msg.bot_id === undefined) {
                 getRandomJoke(postMessage, msg.user)
-            //}
+            } else {
+                getRandomJoke(postMessage, msg.channel)
+            }
       break
     }
 })
