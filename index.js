@@ -24,6 +24,8 @@ bot.on('start', function() {
     // you will post to another user's slackbot channel instead of a direct message
     bot.postMessageToUser('Kenneth', 'meow!', { 'slackbot': true, icon_emoji: ':cat:' }); 
     
+    // define private group instead of 'private_group', where bot exist
+    bot.postMessageToGroup('private_group', 'meow!', params); 
 });
 
 
